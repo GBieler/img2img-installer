@@ -3,7 +3,8 @@ apt update
 apt-get install psmisc
 pip install comfy-cli
 cd /workspace
-echo y | comfy --workspace=/workspace/ComfyUI install --nvidia
+echo y | comfy which
+echo y | comfy --skip-prompt --workspace=/workspace/ComfyUI install --nvidia
 echo y | comfy set-default /workspace/ComfyUI
 
 # Node

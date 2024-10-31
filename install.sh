@@ -3,7 +3,8 @@ apt update
 apt-get install psmisc
 pip install comfy-cli
 cd /workspace
-echo y | comfy --workspace=/workspace/ComfyUI install --nvidia
+echo y | comfy which
+echo y | comfy --skip-prompt --workspace=/workspace/ComfyUI install --nvidia
 echo y | comfy set-default /workspace/ComfyUI
 
 # Node
@@ -58,6 +59,7 @@ wget https://huggingface.co/RunDiffusion/Juggernaut-XL-v9/resolve/main/Juggernau
 ## restarting ComfyUI
 cd /workspace/ComfyUI
 fuser -k 3000/tcp
+comfy run --workflow workspace/img2img-installer/workflow_api.json
 nohup python main.py --listen --port 3000 > /dev/null 2>&1 &
 
 ## start ViewComfy
