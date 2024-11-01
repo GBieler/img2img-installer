@@ -108,7 +108,7 @@
   },
   "12": {
     "inputs": {
-      "image": "marek-studzinski-TEZLseYfyz0-unsplash.jpg",
+      "image": "/workspace/img2img-installer/shape.jpg",
       "upload": "image"
     },
     "class_type": "LoadImage",
@@ -171,7 +171,7 @@
   },
   "17": {
     "inputs": {
-      "image": "style1.png",
+      "image": "/workspace/img2img-installer/style1.png",
       "upload": "image"
     },
     "class_type": "LoadImage",

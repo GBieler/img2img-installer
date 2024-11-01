@@ -9,7 +9,6 @@ echo y | comfy set-default /workspace/ComfyUI
 
 # Node
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
-# source ~/.bashrc
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" 
@@ -22,21 +21,11 @@ npm install
 mv /workspace/img2img-installer/view_comfy.json /workspace/ViewComfy/view_comfy.json
 
 ## Installing custom nodes
-#cd /workspace/ComfyUI/custom_nodes
-
-# Comfy manager
-#git clone https://github.com/ltdrdata/ComfyUI-Manager.git
-
 # IPAdapter plus
 echo y | comfy node install ComfyUI_IPAdapter_plus
-# git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus.git
-# git reset --hard b188a6c
 
 # controlnet_aux
 echo y | comfy node install comfyui_controlnet_aux
-# git clone https://github.com/Fannovel16/comfyui_controlnet_aux.git
-# cd /workspace/ComfyUI/custom_nodes/comfyui_controlnet_aux
-# pip install -r requirements.txt
 
 ## downloading models
 cd /workspace/ComfyUI/models/controlnet
@@ -59,8 +48,9 @@ wget https://huggingface.co/RunDiffusion/Juggernaut-XL-v9/resolve/main/Juggernau
 ## restarting ComfyUI
 cd /workspace/ComfyUI
 fuser -k 3000/tcp
-comfy run --workflow workspace/img2img-installer/workflow_api.json
-nohup python main.py --listen --port 3000 > /dev/null 2>&1 &
+comfy launch --background -- --port 3000
+comfy run --workflow ../img2img-installer/workflow_api_demo.json
+# nohup python main.py --listen --port 3000 > /dev/null 2>&1 &
 
 ## start ViewComfy
 cd /workspace/ViewComfy
